@@ -49,9 +49,9 @@
 						<img src="http://thejbac.com/jacuzziboysfavicon.png" style="height: 20%; width: 20%">
 					</div>
 
-					<div class="col-lg-3 col-lg-pull-2">
-						<?php activello_header_menu(); // main navigation ?>
-				</div>
+<!-- 					<div class="site-navigation-outer col-lg-3 col-lg-pull-2" style="float: right">
+					<?php wp_nav_menu('navigation-two'); 	?>
+					</div> -->
 
 			</div>
 		</nav><!-- .site-navigation -->
@@ -75,6 +75,9 @@
 			$show_title = true;
 		}?>
 
+
+
+
 <!-- 		<div style="background-color: #000; height: 100px"> -->
 <!-- Not supposed to add in an image this way, but doing so now for timliness -->
 <!-- 		<img src="http://thejbac.com/JBACClear.png" class="center-block" style="height: 75%; width: 75%">
@@ -86,9 +89,23 @@
 
 	<div id="content" class="site-content">
 
+
+
 		<div class="top-section">
 			<?php activello_featured_slider(); ?>
 		</div>
+
+<div class="container">
+<?php
+  $home_page_post_id = 40;
+  $home_page_post = get_post( $home_page_post_id, ARRAY_A );
+  $content_home = $home_page_post['post_content'];
+  echo $content_home;
+?>
+</div>
+
+<div id="content" class="narrowcolumn">
+
 
 		<div class="container main-content-area">
 
@@ -106,5 +123,7 @@
                                 $layout_class = get_theme_mod( 'activello_sidebar_position' );
                             }?>
 
+
 			<div class="row">
 				<div class="main-content-inner <?php echo activello_main_content_bootstrap_classes(); ?> <?php echo $layout_class; ?>">
+

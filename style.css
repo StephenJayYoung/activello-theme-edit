@@ -1771,20 +1771,22 @@ nav>li>a {
 }
 
 .flex-caption .post-categories {
-    /* position: relative; */
-    /* padding-bottom: 10px; */
-    /* margin-bottom: 10px; */
-    /* letter-spacing: 1px; */
     display: none;
 }
+
+.flex-caption h2 {
+    text-shadow: 2px 2px #ff0000;
+}
+
+
 
 article.post .post-categories a:hover, .entry-title a:hover, .entry-meta a:hover, .entry-footer a:hover, .read-more a:hover, .flex-caption .post-categories a:hover, .flex-caption .read-more a:hover, .flex-caption h2:hover, .comment-meta.commentmetadata a:hover, .post-inner-content .cat-item a:hover {
      color: #fff; 
 }
 
-.page .entry-title {
+/*.page .entry-title {
     text-shadow: 2px 2px #000;
-}
+}*/
 
 /*div#nav-two.site-navigation{
   text-decoration: none;
@@ -1794,6 +1796,10 @@ article.post .post-categories a:hover, .entry-title a:hover, .entry-meta a:hover
   font-weight: bold;
   text-transform: uppercase;
 }*/
+
+.about-section{
+  background-color: #000;
+}
 
 
 

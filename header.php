@@ -34,7 +34,7 @@
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container">
 				<div class="row">
-					<div class="site-navigation-inner col-lg-3 col-lg-push-2">
+					<div class="site-navigation-inner col-sm-12">
 						<div class="navbar-header">
 							<button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 								<span class="sr-only"><?php _e( 'Toggle navigation', 'activello' ); ?></span>
@@ -44,18 +44,16 @@
 							</button>
 						</div>
 						<?php activello_header_menu(); // main navigation ?>
-					</div>
-					<div class="col-lg-6 col-md-6 col-sm-6 text-center">
-						<img src="http://thejbac.com/jacuzziboysfavicon.png" style="height: 20%; width: 20%">
-					</div>
 
-<!-- 					<div class="site-navigation-outer col-lg-3 col-lg-pull-2" style="float: right">
-					<?php wp_nav_menu('navigation-two'); 	?>
-					</div> -->
-
+						<div class="nav-search"><?php 
+                            add_filter('get_search_form', 'activello_header_search_filter',10,3);
+                            echo get_search_form();
+                            remove_filter('get_search_form', 'activello_header_search_filter');?>							
+						</div>
+					</div>
+				</div>
 			</div>
 		</nav><!-- .site-navigation -->
-
 
 		<?php
 		$show_logo = true;
@@ -75,37 +73,39 @@
 			$show_title = true;
 		}?>
 
+		<div class="container">
+			<div id="logo">
+				<span class="site-name"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php
+					if( $show_logo && $logo ) {
+                        echo wp_get_attachment_image($logo, 'full');
+					}
+					elseif( $show_title ) {
+						bloginfo( 'name' );
+					}
+					else{
+						bloginfo( 'name' );
+					} ?>
+					</a>
+				</span><!-- end of .site-name -->
 
+				<?php if( $show_tagline && get_bloginfo( 'description' ) != "" ) : ?>
+					<div class="tagline"><?php bloginfo( 'description' ); ?></div>
+				<?php endif; ?>
+			</div><!-- end of #logo -->
 
-
-<!-- 		<div style="background-color: #000; height: 100px"> -->
-<!-- Not supposed to add in an image this way, but doing so now for timliness -->
-<!-- 		<img src="http://thejbac.com/JBACClear.png" class="center-block" style="height: 75%; width: 75%">
-
-		</div> -->
+			<?php if( ! is_front_page() || ! is_home() ) : ?>
+			<div id="line"></div>
+			<?php endif; ?>
+		</div>
 
 	</header><!-- #masthead -->
 
 
 	<div id="content" class="site-content">
 
-
-
 		<div class="top-section">
 			<?php activello_featured_slider(); ?>
 		</div>
-
-<div class="container">
-<?php
-  $home_page_post_id = 40;
-  $home_page_post = get_post( $home_page_post_id, ARRAY_A );
-  $content_home = $home_page_post['post_content'];
-  echo $content_home;
-?>
-</div>
-
-<div id="content" class="narrowcolumn">
-
 
 		<div class="container main-content-area">
 
@@ -123,7 +123,5 @@
                                 $layout_class = get_theme_mod( 'activello_sidebar_position' );
                             }?>
 
-
 			<div class="row">
 				<div class="main-content-inner <?php echo activello_main_content_bootstrap_classes(); ?> <?php echo $layout_class; ?>">
-
